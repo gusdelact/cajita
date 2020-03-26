@@ -4,6 +4,10 @@ use cajita::digital::VersionDalek::V1;
 use cajita::digital::VersionDalek::V2;
 
 ///! en esta prueba de integracion, se agregan nuevos elementos para probar la extension del Crate
+
+trait Humano {
+  fn miedo(&self) -> i32;
+}
 enum TipoPoder {
   NORMAL,
   ESPECIAL,
@@ -24,6 +28,14 @@ impl Binario for Cyborg<'_> {
   }
   fn turing(&self) -> bool {
    true
+  }
+}
+
+const TEMOR :i32 = 100;
+
+impl Humano for Cyborg<'_> {
+  fn miedo(&self) -> i32 {
+    return TEMOR;
   }
 }
 #[test]
@@ -48,4 +60,5 @@ fn una_escena_daleks() {
 fn un_cyborg() {
   let cyb0 = Cyborg {name : "1138", nivel_poder: TipoPoder::ESPECIAL };
   assert!(cyb0.george());
+  assert_eq!(cyb0.miedo(), TEMOR);
 }
