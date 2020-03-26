@@ -21,6 +21,8 @@
 //! ```
 //!
 pub mod digital;
+
+//pruebas unitarias
 #[cfg(test)]
 mod tests { 
     use crate::digital::*;
@@ -50,5 +52,16 @@ mod tests {
        ];
        let resultado=escena(daleks.to_vec());
        assert!(resultado);
+    }
+    #[test]
+    fn dalek_escena_v1() {
+       let daleks = [
+         Dalek { identificador: 42, estado: false , version: VersionDalek::V1 },
+         Dalek { identificador: 53, estado: true  , version: VersionDalek::V1},
+         Dalek { identificador: 64, estado: true  , version: VersionDalek::V1},
+         Dalek { identificador: 75, estado: false , version: VersionDalek::V1},
+       ];
+       let resultado=escena(daleks.to_vec());
+       assert!(!resultado);
     }
 }
